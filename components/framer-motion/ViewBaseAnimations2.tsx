@@ -1,9 +1,10 @@
+"use client";
 import React, { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
-const ViewBasedAnimations = () => {
+const ViewBaseAnimations2 = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: false });
 
   useEffect(() => {
     console.log("Is in view -> ", isInView);
@@ -30,4 +31,4 @@ const ViewBasedAnimations = () => {
   );
 };
 
-export default ViewBasedAnimations;
+export default ViewBaseAnimations2;
