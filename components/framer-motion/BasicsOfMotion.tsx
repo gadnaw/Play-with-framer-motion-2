@@ -1,4 +1,6 @@
 "use client";
+// Lesson from https://www.youtube.com/watch?v=znbCa4Rr054&t=1185s
+
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
