@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// BasicsOfMotion component demonstrates basic animation using Framer Motion
+// LESSON: demonstrates animation onMount and onExit
 const BasicsOfMotion = () => {
   const [isVisible, setIsVisible] = useState(true);
 
@@ -46,7 +46,8 @@ const BasicsOfMotion = () => {
               // The 'times' array corresponds to the y animation array:
               // 0: Start of the animation (0% of duration)
               // 0.4: When it reaches the bottom (40% of duration)
-              // 0.75: When it jumps to the top (75% of duration)
+              // 0.5: When it jumps to the top (50% of duration)
+              // 0.8: When it jumps to the top (80% of duration)
               // 1: End of the animation (100% of duration)
               // These values are fractions of the total duration (2 seconds)
               // This timing creates a non-linear motion effect
