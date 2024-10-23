@@ -10,7 +10,7 @@ import ScrollAnimations from "@/components/framer-motion/ScrollAnimation2";
 export default function Home() {
   return (
     <main className="relative flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5 bg-gray-600">
-      <div className="max-w-7xl w-full">
+      <div className="max-w-7xl w-full relative">
         {/*  */}
         {/* DEMO of onMount and onExit Animation */}
         {/* <BasicsOfMotion /> */}
