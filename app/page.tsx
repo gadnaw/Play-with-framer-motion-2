@@ -2,7 +2,9 @@ import AnimationControls from "@/components/framer-motion/AnimationControls";
 import AnimationControls2 from "@/components/framer-motion/AnimationControls2";
 import BasicsOfMotion from "@/components/framer-motion/BasicsOfMotion";
 import Gestures from "@/components/framer-motion/Gestures";
-import ScrollAnimations from "@/components/framer-motion/ScrollAnimation";
+import ScrollAnimation from "@/components/framer-motion/ScrollAnimation";
+import ScrollAnimations2 from "@/components/framer-motion/ScrollAnimation2";
+import ScrollAnimations from "@/components/framer-motion/ScrollAnimation2";
 // import Hero from "@/components/Hero";
 
 export default function Home() {
@@ -18,8 +20,8 @@ export default function Home() {
 
         {/* <AnimationControls /> */}
         {/* <AnimationControls2 /> */}
-
-        <ScrollAnimations />
+        <ScrollAnimation />
+        {/* <ScrollAnimations2 /> */}
       </div>
     </main>
   );
