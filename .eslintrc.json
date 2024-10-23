@@ -1,0 +1,50 @@
+{
+  // Extend from these ESLint configurations
+  "extends": [
+    "next/core-web-vitals", // Next.js core web vitals rules
+    "next/typescript", // Next.js TypeScript rules
+    "plugin:boundaries/recommended" // Recommended rules for eslint-plugin-boundaries
+  ],
+
+  // Enable the boundaries plugin
+  "plugins": ["boundaries"],
+
+  // Configuration for eslint-plugin-boundaries
+  "settings": {
+    "boundaries/elements": [
+      {
+        "type": "app",
+        "pattern": "app/*" // Defines the 'app' boundary
+      },
+      {
+        "type": "components",
+        "pattern": "components/*" // Defines the 'components' boundary
+      },
+      {
+        "type": "features",
+        "pattern": "features/*" // Defines the 'features' boundary
+      }
+    ]
+  },
+
+  // Custom rules configuration
+  "rules": {
+    // Rule for controlling imports between boundaries
+    "boundaries/element-types": [
+      2, // Error level
+      {
+        "default": "disallow", // By default, disallow imports between boundaries
+        "rules": [
+          {
+            "from": "components",
+            "allow": ["app", "features"] // Components can import from app and features
+          },
+          {
+            "from": "features",
+            "allow": ["features", "app"] // Features can import from features and app
+          }
+        ]
+      }
+    ]
+  }
+}
