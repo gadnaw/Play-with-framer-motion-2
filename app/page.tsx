@@ -1,3 +1,4 @@
+import AnimationControls from "@/components/framer-motion/AnimationControls";
 import BasicsOfMotion from "@/components/framer-motion/BasicsOfMotion";
 import Gestures from "@/components/framer-motion/Gestures";
 // import Hero from "@/components/Hero";
@@ -10,8 +11,10 @@ export default function Home() {
         {/* DEMO of onMount and onExit Animation */}
         {/* <BasicsOfMotion /> */}
 
-        {/* DEMO OF Animation when something happened */}
-        <Gestures />
+        {/* DEMO OF Animation when something happened but dont affect other components*/}
+        {/* <Gestures /> */}
+
+        <AnimationControls />
       </div>
     </main>
   );

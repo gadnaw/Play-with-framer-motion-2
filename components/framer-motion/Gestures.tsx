@@ -1,7 +1,9 @@
 "use client";
 import { motion, MotionConfig } from "framer-motion";
 
-// LESSON: demonstrate Animation when SOMETHING HAPPENED
+// LESSONS:
+// 1. demonstrate Animation when SOMETHING HAPPENED
+// 2. the animation DONT affect other components
 const Gestures = () => {
   return (
     <div className="grid place-content-center h-screen gap-3">
