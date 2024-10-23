@@ -10,7 +10,7 @@ const BasicsOfMotion = () => {
     <div className="grid place-content-center h-screen gap-3">
       <motion.button
         onClick={() => setIsVisible(!isVisible)}
-        className="example-button absolute top-4 left-1/2 transform -translate-x-1/2"
+        className="example-button absolute top-4 left-1/2 transform -translate-x-1/2 bg-blue-500"
         layout
       >
         Show/Hide
