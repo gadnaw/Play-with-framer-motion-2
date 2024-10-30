@@ -1,12 +1,13 @@
-import AnimationControls from "@/components/framer-motion/AnimationControls";
-import AnimationControls2 from "@/components/framer-motion/AnimationControls2";
-import BasicsOfMotion from "@/components/framer-motion/BasicsOfMotion";
-import Gestures from "@/components/framer-motion/Gestures";
-import ScrollAnimation from "@/components/framer-motion/ScrollAnimation";
-import ScrollAnimations2 from "@/components/framer-motion/ScrollAnimation2";
-import ScrollAnimations from "@/components/framer-motion/ScrollAnimation2";
-import ViewBaseAnimations from "@/components/framer-motion/ViewBaseAnimations";
-import ViewBaseAnimations2 from "@/components/framer-motion/ViewBaseAnimations2";
+// import AnimationControls from "@/components/framer-motion/AnimationControls";
+// import AnimationControls2 from "@/components/framer-motion/AnimationControls2";
+// import BasicsOfMotion from "@/components/framer-motion/BasicsOfMotion";
+// import Gestures from "@/components/framer-motion/Gestures";
+// import ScrollAnimation from "@/components/framer-motion/ScrollAnimation";
+// import ScrollAnimations2 from "@/components/framer-motion/ScrollAnimation2";
+// import ScrollAnimations from "@/components/framer-motion/ScrollAnimation2";
+// import ViewBaseAnimations from "@/components/framer-motion/ViewBaseAnimations";
+// import ViewBaseAnimations2 from "@/components/framer-motion/ViewBaseAnimations2";
+import RotateImage from "@/features/RotateImage";
 // import Hero from "@/components/Hero";
 
 export default function Home() {
@@ -24,8 +25,11 @@ export default function Home() {
         {/* <AnimationControls2 /> */}
         {/* <ScrollAnimation /> */}
         {/* <ScrollAnimations2 /> */}
-        <ViewBaseAnimations />
+        {/* <ViewBaseAnimations /> */}
         {/* <ViewBaseAnimations2 /> */}
+        {/* --------------------- */}
+
+        <RotateImage />
       </div>
     </main>
   );

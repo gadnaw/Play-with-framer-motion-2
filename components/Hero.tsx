@@ -1,4 +1,4 @@
-import { Spotlight } from "./ui/Spotlight";
+import { Spotlight } from "./Spotlight";
 
 const Hero = () => {
   return (

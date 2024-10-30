@@ -1,47 +1,54 @@
 {
-  // Extend from these ESLint configurations
   "extends": [
-    "next/core-web-vitals", // Next.js core web vitals rules
-    "next/typescript", // Next.js TypeScript rules
-    "plugin:boundaries/recommended" // Recommended rules for eslint-plugin-boundaries
+    "next/core-web-vitals",
+    "next/typescript",
+    "plugin:react/recommended",
+    "plugin:boundaries/recommended"
   ],
-
-  // Enable the boundaries plugin
-  "plugins": ["boundaries"],
-
-  // Configuration for eslint-plugin-boundaries
+  "plugins": ["react", "boundaries"],
   "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "boundaries/include": ["./**/*"],
     "boundaries/elements": [
       {
+        "mode": "full",
         "type": "app",
-        "pattern": "app/*" // Defines the 'app' boundary
+        "pattern": "app/*"
       },
       {
+        "mode": "full",
         "type": "components",
-        "pattern": "components/**/*" // Defines the 'components' boundary
+        "pattern": "components/*"
       },
       {
+        "mode": "full",
         "type": "features",
-        "pattern": "features/*" // Defines the 'features' boundary
+        "pattern": "features/*"
       }
     ]
   },
-
-  // Custom rules configuration
   "rules": {
-    // Rule for controlling imports between boundaries
+    "react/react-in-jsx-scope": "off",
+    "boundaries/no-unknown": "warn",
+    "boundaries/no-unknown-files": "warn",
     "boundaries/element-types": [
-      2, // Error level
+      "warn",
       {
-        "default": "disallow", // By default, disallow imports between boundaries
+        "default": "disallow",
         "rules": [
           {
             "from": "components",
-            "allow": ["app", "features"] // Components can import from app and features
+            "allow": ["components", "features"]
           },
           {
             "from": "features",
-            "allow": ["features", "app"] // Features can import from features and app
+            "allow": ["features"]
+          },
+          {
+            "from": "app",
+            "allow": ["app"]
           }
         ]
       }
