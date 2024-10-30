@@ -12,8 +12,8 @@ import RotateImage from "@/features/RotateImage";
 
 export default function Home() {
   return (
-    <main className="relative flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5 bg-gray-600">
-      <div className="max-w-7xl w-full relative">
+    <main className="relative h-screen grid place-content-center overflow-hidden mx-auto sm:px-10 px-5 bg-gray-600">
+      <div>
         {/*  */}
         {/* DEMO of onMount and onExit Animation */}
         {/* <BasicsOfMotion /> */}

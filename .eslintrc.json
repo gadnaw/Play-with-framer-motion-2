@@ -1,54 +1,92 @@
+// ESLint configuration for enforcing module boundaries and import rules
+// This configuration uses eslint-plugin-boundaries and eslint-plugin-import
+// Reference: https://www.youtube.com/watch?v=xyxrB2Aa7KE&list=PLofUfbSvCukCBjoFbplwQ2izqM4Bbz7Vq&index=25
+
 {
-  "extends": [
-    "next/core-web-vitals",
-    "next/typescript",
-    "plugin:react/recommended",
-    "plugin:boundaries/recommended"
-  ],
-  "plugins": ["react", "boundaries"],
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "plugins": ["boundaries"],
   "settings": {
-    "react": {
-      "version": "detect"
-    },
-    "boundaries/include": ["./**/*"],
+    // Define the scope of files to be checked
+    "boundaries/include": ["src/**/**"],
+    // Define the different types of modules and their boundaries
     "boundaries/elements": [
       {
         "mode": "full",
+        "type": "shared",
+        "pattern": [
+          "src/components/**/*",
+          "src/data/**/*",
+          "src/drizzle/**/*",
+          "src/hooks/**/*",
+          "src/lib/**/*",
+          "src/server/**/*"
+        ]
+      },
+      {
+        "mode": "full",
+        "type": "feature",
+        "capture": ["featureName"],
+        "pattern": ["src/features/*/**/*"]
+      },
+      {
+        "mode": "full",
         "type": "app",
-        "pattern": "app/*"
+        "capture": ["_", "filename"],
+        "pattern": ["src/app/**/*"]
       },
       {
         "mode": "full",
-        "type": "components",
-        "pattern": "components/*"
-      },
-      {
-        "mode": "full",
-        "type": "features",
-        "pattern": "features/*"
+        "type": "neverImport",
+        "pattern": ["src/*", "src/tasks/**/*"]
       }
     ]
   },
+
+  // Rules for enforcing module boundaries
+  // By default, all imports between different module types are disallowed
+  // We then explicitly define rules to allow specific import patterns
   "rules": {
-    "react/react-in-jsx-scope": "off",
-    "boundaries/no-unknown": "warn",
-    "boundaries/no-unknown-files": "warn",
+    // Prevent imports from unknown modules
+    "boundaries/no-unknown": ["error"],
+    // Example: import { someFunction } from 'unknown-module'; // This would trigger an error
+
+    // Prevent imports from unknown files
+    "boundaries/no-unknown-files": ["error"],
+    // Example: import { someComponent } from './UnknownComponent'; // This would trigger an error
+
+    // Define allowed import patterns between module types
     "boundaries/element-types": [
-      "warn",
+      "error",
       {
         "default": "disallow",
         "rules": [
+          // Shared modules can only import from other shared modules
+          // This is from "type": "shared" above
           {
-            "from": "components",
-            "allow": ["components", "features"]
+            "from": ["shared"],
+            "allow": ["shared"]
           },
+          // Feature modules can import from shared modules and their own feature
+          // This is from "type": "feature" above
           {
-            "from": "features",
-            "allow": ["features"]
+            "from": ["feature"],
+            "allow": [
+              "shared",
+              ["feature", { "featureName": "${from.featureName}" }]
+              // The { "featureName": "${from.featureName}" } ensures that a feature module
+              // can only import from its own feature directory, not from other features.
+              // ${from.featureName} is a dynamic value that matches the name of the current feature.
+            ]
           },
+          // App and neverImport modules can import from shared and feature modules
           {
-            "from": "app",
-            "allow": ["app"]
+            "from": ["app", "neverImport"],
+            "allow": ["shared", "feature"]
+          },
+          // App modules can import CSS files from other app modules
+          {
+            "from": ["app"],
+            "allow": [["app", { "filename": "*.css" }]]
           }
         ]
       }
