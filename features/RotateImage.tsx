@@ -1,5 +1,5 @@
 "use client";
-import { useMotionValue, useTransform, motion } from "framer-motion";
+import { useMotionValue, useTransform, motion, useSpring } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -37,11 +37,15 @@ const RotateImage = () => {
   const { innerH, innerW } = windowOffset;
   // --------------
 
+  // Optional: But it has better reaction to our animation
+  const xSpring = useSpring(x, { stiffness: 100, damping: 10 });
+  const ySpring = useSpring(y, { stiffness: 100, damping: 10 });
+
   // 7th: Transform the values for rotation according to mouse possition
   // useTransform(<variable>, [<input range>], [<output range>] )
   // rotateXaxis and rotateYAxis is the main goal before animation
-  const rotateXAxis = useTransform(x, [0, innerW], [-50, 50]);
-  const rotateYAxis = useTransform(y, [0, innerH], [10, -50]);
+  const rotateXAxis = useTransform(xSpring, [0, innerW], [-50, 50]);
+  const rotateYAxis = useTransform(ySpring, [0, innerH], [10, -50]);
 
   return (
     <div className="border-solid bg-green-400">
